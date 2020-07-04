@@ -31,7 +31,7 @@ make crkbd:shyiko:avrdude-split-left
 make crkbd:shyiko:avrdude-split-right
 ```
 
-### If the above doesn't work (e.g. "ERROR: bootloader not found")
+### If the above doesn't work (e.g. stuck on "Detecting USB port, reset your controller now...")
 
 #### Setup udev rules
 

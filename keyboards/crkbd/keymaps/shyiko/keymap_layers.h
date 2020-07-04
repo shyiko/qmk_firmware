@@ -51,8 +51,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_EXTRA] = LAYOUT(                                                                                                                   \
     _______,         DF(L_QWERTY), DF(L_COLEMAK), XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, KC_BRID, KC_BRIU, KC_PSCR, KC_INS,  XXXXXXX, \
-    LSFT_T(KC_CAPS), KC_MUTE,      KC_VOLD,       KC_VOLU, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-    _______,         KC_MPLY,      KC_MPRV,       KC_MNXT, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+    LSFT_T(KC_CAPS), XXXXXXX,      XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, \
+    _______,         XXXXXXX,      XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, _______, \
                                                   _______, _______, _______, /**/ _______, _______, _______                             \
   ),
 

@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_LOWER] = LAYOUT(                                                                                                               \
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,      KC_5,     /**/ KC_6,      KC_7,     KC_8,    KC_9,        KC_0,        _______,  \
-    _______, KC_SCLN, KC_COLN, KC_UP,   KC_BSLASH, KC_UNDS,  /**/ KC_MINUS,  KC_EQUAL, XXXXXXX, KC_LBRACKET, KC_RBRACKET, _______,  \
+    _______, XXXXXXX, XXXXXXX, KC_UP,   KC_BSLASH, KC_UNDS,  /**/ KC_MINUS,  KC_EQUAL, KC_COLN, KC_LBRACKET, KC_RBRACKET, _______,  \
     _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT,  KC_TILD,  /**/ KC_PLUS,   XXXXXXX,  _______, _______,     _______,     KC_GRAVE, \
                                _______, _______,   _______,  /**/ _______,   _______,  _______                                      \
   ),
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_RAISE] = LAYOUT(                                                                                                  \
     _______, KC_F1,   KC_F2,  KC_F3,   KC_F4,   KC_F5,   /**/ KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_DELETE, \
     _______, KC_F11,  KC_F12, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX,  XXXXXXX, XXXXXXX,   \
-    _______, XXXXXXX, KC_X,   KC_C,    KC_V,    XXXXXXX, /**/ XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT, KC_APP,  _______,   \
+    _______, XXXXXXX, KC_X,   KC_C,    KC_V,    XXXXXXX, /**/ XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, _______,   \
                              _______, _______,  _______, /**/ _______,  _______, TG(L_MOUSE)                           \
   ),
 
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_EXTRA] = LAYOUT(                                                                                                                   \
     _______,         DF(L_QWERTY), DF(L_COLEMAK), XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, KC_BRID, KC_BRIU, KC_PSCR, KC_INS,  XXXXXXX, \
-    LSFT_T(KC_CAPS), XXXXXXX,      XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, \
+    LSFT_T(KC_CAPS), XXXXXXX,      XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, KC_APP,  \
     _______,         XXXXXXX,      XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, _______, \
                                                   _______, _______, _______, /**/ _______, _______, _______                             \
   ),

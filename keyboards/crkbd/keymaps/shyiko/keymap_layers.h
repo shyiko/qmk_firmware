@@ -20,19 +20,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          KC_LALT, LOWER, KC_SPC, /**/ KC_ENT, RAISE, KC_LGUI                            \
   ),
 
-  [L_LOWER] = LAYOUT(                                                                                                               \
-    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,      KC_5,     /**/ KC_6,      KC_7,     KC_8,    KC_9,        KC_0,        _______,  \
-    _______, XXXXXXX, XXXXXXX, KC_UP,   KC_BSLASH, KC_UNDS,  /**/ KC_MINUS,  KC_EQUAL, KC_COLN, KC_LBRACKET, KC_RBRACKET, _______,  \
-    _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT,  KC_TILD,  /**/ KC_PLUS,   XXXXXXX,  _______, _______,     _______,     KC_GRAVE, \
-                               _______, _______,   _______,  /**/ _______,   _______,  _______                                      \
+  [L_LOWER] = LAYOUT(                                                                                                     \
+    KC_ESC,  KC_1,      KC_2,    KC_3,    KC_4,    KC_5,    /**/ KC_6,     KC_7,     KC_8,    KC_9,    KC_0,    _______,  \
+    _______, KC_LBRC,   KC_RBRC, XXXXXXX, XXXXXXX, KC_PLUS, /**/ KC_MINUS, KC_UNDS,  XXXXXXX, KC_LCBR, KC_RCBR, _______,  \
+    _______, KC_BSLASH, XXXXXXX, XXXXXXX, KC_COLN, KC_TILD, /**/ KC_PIPE,  KC_EQUAL, _______, _______, _______, KC_GRAVE, \
+                                 _______, _______, _______, /**/ _______,  _______,  _______                              \
   ),
 
   // NOTE: make sure to update keymap.c if you change this layer
-  [L_LOWER_SHIFT] = LAYOUT(                                                                                             \
-    _______, _______, _______, _______,   _______,  _______, /**/ _______, _______, _______, _______, _______, _______, \
-    _______, _______, _______, KC_PGUP,   _______,  _______, /**/ _______, _______, _______, _______, _______, _______, \
-    _______, _______, KC_HOME, KC_PGDOWN, KC_END,   _______, /**/ _______, _______, _______, _______, _______, _______, \
-                               _______,   _______,  _______, /**/ _______, _______, _______                             \
+  [L_LOWER_SHIFT] = LAYOUT(                                                                                          \
+    _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, \
+    _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, \
+                               _______, _______, _______, /**/ _______, _______, _______                             \
   ),
 
   [L_RAISE] = LAYOUT(                                                                                                  \
@@ -43,10 +43,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [L_ADJUST] = LAYOUT(                                                                                                             \
-    _______, NEGEEQUAL, XXXXXXX,   XXXXXXX, XXXXXXX,   XXXXXXX,   /**/ XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, \
-    _______, XXXXXXX,   COLNEQUAL, XXXXXXX, FATARROWL, FITARROWL, /**/ FITARROWR, FATARROWR, KC_PGUP,   XXXXXXX, XXXXXXX, _______, \
-    _______, XXXXXXX,   XXXXXXX,   XXXXXXX, XXXXXXX,   XXXXXXX,   /**/ XXXXXXX,   KC_HOME,   KC_PGDOWN, KC_END,  XXXXXXX, _______, \
-                                      _______,       _______,   _______,   /**/ _______,   _______,   _______                      \
+    _______, NEGEEQUAL, XXXXXXX, XXXXXXX, FATARROWL, FITARROWL, /**/ FITARROWR, FATARROWR, XXXXXXX,   XXXXXXX, COLNEQUAL, XXXXXXX, \
+    _______, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   /**/ XXXXXXX,   XXXXXXX,   KC_PGUP,   XXXXXXX, XXXXXXX,   _______, \
+    _______, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   /**/ XXXXXXX,   KC_HOME,   KC_PGDOWN, KC_END,  XXXXXXX,   _______, \
+                                   _______, _______,   _______,   /**/ _______,   _______,   _______                               \
   ),
 
   [L_EXTRA] = LAYOUT(                                                                                                                   \

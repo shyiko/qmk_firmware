@@ -10,6 +10,7 @@
 #define L_EXTRA 5
 #define L_ADJUST 6 // LOWER+RAISE
 #define L_MOUSE 7
+#define L_NUMPAD 8
 
 // custom key codes for layer switching
 enum kc_custom {
@@ -26,23 +27,23 @@ enum kc_custom {
 
 #include "keymap_layers.h"
 
-bool restore_shift = false;
+bool restore_shift_on_next_key = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (restore_shift) {
+  if (restore_shift_on_next_key) {
     register_code(KC_LSFT);
-    restore_shift = false;
+    restore_shift_on_next_key = false;
   }
   if (IS_LAYER_ON(L_LOWER_SHIFT) && !IS_LAYER_ON(L_RAISE)) {
     switch (keycode) {
-      case KC_SCLN:
-      case KC_MPRV: case KC_MNXT: case KC_PGUP:
-      case KC_MPLY: case KC_HOME: case KC_PGDOWN: case KC_END:
-      case KC_MINUS: case KC_EQUAL: /* case KC_BSLASH:  */case KC_GRAVE:
+      case KC_GRAVE: case KC_MINUS: case KC_EQUAL:
+      case KC_LBRC: case KC_RBRC: case KC_BSLASH:
+      case KC_SCLN: case KC_QUOT:
+      case KC_COMM: case KC_DOT: case KC_SLSH:
         if (record->event.pressed) {
             unregister_code(KC_LSFT);
         } else {
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         break; // let qmk handle keycode as usual
       case LOWER:
@@ -62,7 +63,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(L_LOWER_SHIFT);
       } else {
         layer_off(L_LOWER_SHIFT);
-        restore_shift = false;
+        restore_shift_on_next_key = false;
       }
       break; // let qmk handle keycode as usual
     case LOWER:
@@ -73,7 +74,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       } else {
         layer_off(L_LOWER_SHIFT);
-        restore_shift = false;
+        restore_shift_on_next_key = false;
         layer_off(L_LOWER);
       }
       update_tri_layer(L_LOWER, L_RAISE, L_ADJUST);
@@ -97,7 +98,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             unregister_code(KC_LSFT);
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         SEND_STRING("=>");
       }
@@ -106,7 +107,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             unregister_code(KC_LSFT);
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         SEND_STRING("<=");
       }
@@ -115,7 +116,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             unregister_code(KC_LSFT);
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         SEND_STRING("->");
       }
@@ -124,7 +125,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             unregister_code(KC_LSFT);
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         SEND_STRING("<-");
       }
@@ -133,7 +134,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             unregister_code(KC_LSFT);
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         SEND_STRING(":=");
       }
@@ -142,7 +143,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if (get_mods() & MOD_BIT(KC_LSFT)) {
             unregister_code(KC_LSFT);
-            restore_shift = true;
+            restore_shift_on_next_key = true;
         }
         SEND_STRING("!=");
       }

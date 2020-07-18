@@ -40,6 +40,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case KC_LBRC: case KC_RBRC: case KC_BSLASH:
       case KC_SCLN: case KC_QUOT:
       case KC_COMM: case KC_DOT: case KC_SLSH:
+      case KC_1: case KC_2: case KC_3: case KC_4: case KC_5:
+      case KC_6: case KC_7: case KC_8: case KC_9: case KC_0:
         if (record->event.pressed) {
             unregister_code(KC_LSFT);
         } else {

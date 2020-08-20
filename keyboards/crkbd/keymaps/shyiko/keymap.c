@@ -10,7 +10,6 @@
 #define L_EXTRA 5
 #define L_ADJUST 6 // LOWER+RAISE
 #define L_MOUSE 7
-#define L_NUMPAD 8
 
 // custom key codes for layer switching
 enum kc_custom {
@@ -42,6 +41,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case KC_COMM: case KC_DOT: case KC_SLSH:
       case KC_1: case KC_2: case KC_3: case KC_4: case KC_5:
       case KC_6: case KC_7: case KC_8: case KC_9: case KC_0:
+      case KC_KP_MINUS: case KC_KP_PLUS:
         if (record->event.pressed) {
             unregister_code(KC_LSFT);
         } else {

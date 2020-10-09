@@ -23,11 +23,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          KC_LALT, LOWER, KC_SPC, /**/ KC_ENT, RAISE, KC_LGUI                            \
   ),
 
-  [L_LOWER] = LAYOUT(                                                                                                         \
-    KC_ESC,  KC_1,      KC_2,    KC_3,    KC_4,    KC_5,       /**/ KC_6,     KC_7,    KC_8,     KC_9,    KC_0,    _______,   \
-    _______, KC_LBRC,   KC_RBRC, KC_LCBR, KC_RCBR, KC_KP_PLUS, /**/ KC_MINUS, KC_COLN, KC_EQUAL, KC_LPRN, KC_RPRN, KC_GRAVE,  \
-    _______, KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,    /**/ KC_CIRC,  KC_AMPR, KC_ASTR,  _______, _______, KC_BSLASH, \
-                                 _______, _______, _______,    /**/ _______,  _______, _______                                \
+  [L_LOWER] = LAYOUT(                                                                                                       \
+    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       /**/ KC_6,     KC_7,    KC_8,     KC_9,    KC_0,    _______,   \
+    _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_KP_PLUS, /**/ KC_MINUS, KC_COLN, KC_EQUAL, KC_LPRN, KC_RPRN, KC_GRAVE,  \
+    _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,    /**/ KC_CIRC,  KC_AMPR, KC_ASTR,  _______, _______, KC_BSLASH, \
+                               _______, _______, _______,    /**/ _______,  _______, _______                                \
   ),
 
   // NOTE: make sure to update keymap.c if you change this layer

@@ -8,7 +8,7 @@ This document describes how to flash Elite C v3.0+/Micro Pro for corne.
 ## Quickstart
 
 ```bash
-git clone --recurse-submodules https://github.com/qmk/qmk_firmware.git &&
+git clone --recurse-submodules https://github.com/shyiko/qmk_firmware.git &&
   cd qmk_firmware
 util/qmk_install.sh
 ```

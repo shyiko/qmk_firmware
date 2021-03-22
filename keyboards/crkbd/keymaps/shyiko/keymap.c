@@ -15,23 +15,22 @@
 enum kc_custom {
   LOWER = SAFE_RANGE,
   RAISE,
-  EXTRA,
-  FATARROWR,
-  FATARROWL,
-  FITARROWR,
-  FITARROWL,
-  COLNEQUAL,
-  NEGEEQUAL,
+  EXTRA
 };
 
 #include "keymap_layers.h"
 
-bool restore_shift_on_next_key = false;
+bool register_lshift_on_next_key = false;
+bool unregister_lctrl_on_next_key = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (restore_shift_on_next_key) {
+  if (unregister_lctrl_on_next_key) {
+    unregister_code(KC_LCTL);
+    unregister_lctrl_on_next_key = false;
+  }
+  if (register_lshift_on_next_key) {
     register_code(KC_LSFT);
-    restore_shift_on_next_key = false;
+    register_lshift_on_next_key = false;
   }
   if (IS_LAYER_ON(L_LOWER_SHIFT) && !IS_LAYER_ON(L_RAISE)) {
     switch (keycode) {
@@ -42,10 +41,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case KC_1: case KC_2: case KC_3: case KC_4: case KC_5:
       case KC_6: case KC_7: case KC_8: case KC_9: case KC_0:
       case KC_KP_MINUS: case KC_KP_PLUS:
+      case KC_PGUP: case KC_PGDOWN:
         if (record->event.pressed) {
             unregister_code(KC_LSFT);
         } else {
-            restore_shift_on_next_key = true;
+            register_lshift_on_next_key = true;
+        }
+        break; // let qmk handle keycode as usual
+      case KC_HOME: case KC_END:
+        if (record->event.pressed) {
+            unregister_code(KC_LSFT);
+            register_code(KC_LCTL);
+        } else {
+            register_lshift_on_next_key = true;
+            unregister_lctrl_on_next_key = true;
         }
         break; // let qmk handle keycode as usual
       case LOWER:
@@ -65,7 +74,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(L_LOWER_SHIFT);
       } else {
         layer_off(L_LOWER_SHIFT);
-        restore_shift_on_next_key = false;
+        register_lshift_on_next_key = false;
       }
       break; // let qmk handle keycode as usual
     case LOWER:
@@ -76,7 +85,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       } else {
         layer_off(L_LOWER_SHIFT);
-        restore_shift_on_next_key = false;
+        register_lshift_on_next_key = false;
         layer_off(L_LOWER);
       }
       update_tri_layer(L_LOWER, L_RAISE, L_ADJUST);
@@ -94,60 +103,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(L_EXTRA);
       } else {
         layer_off(L_EXTRA);
-      }
-      return false;
-    case FATARROWR:
-      if (record->event.pressed) {
-        if (get_mods() & MOD_BIT(KC_LSFT)) {
-            unregister_code(KC_LSFT);
-            restore_shift_on_next_key = true;
-        }
-        SEND_STRING("=>");
-      }
-      return false;
-    case FATARROWL:
-      if (record->event.pressed) {
-        if (get_mods() & MOD_BIT(KC_LSFT)) {
-            unregister_code(KC_LSFT);
-            restore_shift_on_next_key = true;
-        }
-        SEND_STRING("<=");
-      }
-      return false;
-    case FITARROWR:
-      if (record->event.pressed) {
-        if (get_mods() & MOD_BIT(KC_LSFT)) {
-            unregister_code(KC_LSFT);
-            restore_shift_on_next_key = true;
-        }
-        SEND_STRING("->");
-      }
-      return false;
-    case FITARROWL:
-      if (record->event.pressed) {
-        if (get_mods() & MOD_BIT(KC_LSFT)) {
-            unregister_code(KC_LSFT);
-            restore_shift_on_next_key = true;
-        }
-        SEND_STRING("<-");
-      }
-      return false;
-    case COLNEQUAL:
-      if (record->event.pressed) {
-        if (get_mods() & MOD_BIT(KC_LSFT)) {
-            unregister_code(KC_LSFT);
-            restore_shift_on_next_key = true;
-        }
-        SEND_STRING(":=");
-      }
-      return false;
-    case NEGEEQUAL:
-      if (record->event.pressed) {
-        if (get_mods() & MOD_BIT(KC_LSFT)) {
-            unregister_code(KC_LSFT);
-            restore_shift_on_next_key = true;
-        }
-        SEND_STRING("!=");
       }
       return false;
   }

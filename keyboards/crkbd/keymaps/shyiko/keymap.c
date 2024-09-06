@@ -3,19 +3,18 @@
 // layers
 // https://beta.docs.qmk.fm/using-qmk/software-features/feature_layers
 #define L_QWERTY 0
-#define L_COLEMAK 1
-#define L_LOWER 2
-#define L_LOWER_SHIFT 3
-#define L_RAISE 4
-#define L_EXTRA 5
-#define L_ADJUST 6 // LOWER+RAISE
-#define L_MOUSE 7
+#define L_LOWER 1
+#define L_LOWER_SHIFT 2
+#define L_RAISE 3
+#define L_RAISE_J 4
+#define L_ADJUST 5 // LOWER+RAISE
+#define L_MOUSE 6
 
 // custom key codes for layer switching
 enum kc_custom {
   LOWER = SAFE_RANGE,
   RAISE,
-  EXTRA
+  RAISE_J
 };
 
 #include "keymap_layers.h"
@@ -66,6 +65,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
   }
   switch (keycode) {
+    case KC_BSLASH:
+      if (get_mods() & MOD_BIT(KC_LSFT)) {
+        unregister_code(KC_LSFT);
+        register_lshift_on_next_key = true;
+      }
+      break; // let qmk handle keycode as usual
     case KC_LSFT:
       if (!IS_LAYER_ON(L_LOWER)) {
         break; // let qmk handle keycode as usual
@@ -98,11 +103,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       update_tri_layer(L_LOWER, L_RAISE, L_ADJUST);
       return false;
-    case EXTRA:
+    case RAISE_J:
       if (record->event.pressed) {
-        layer_on(L_EXTRA);
+        layer_on(L_RAISE_J);
       } else {
-        layer_off(L_EXTRA);
+        layer_off(L_RAISE_J);
       }
       return false;
   }

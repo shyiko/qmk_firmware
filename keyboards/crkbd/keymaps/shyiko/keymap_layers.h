@@ -9,18 +9,11 @@
 // you'll see that second character is often lost).
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [L_QWERTY] = LAYOUT(                                                                                  \
-    KC_TAB,  KC_Q, KC_W, KC_E,    KC_R,  KC_T,   /**/ KC_Y,   KC_U,  KC_I,    KC_O,   KC_SCLN, KC_BSPC, \
-    KC_LSFT, KC_A, KC_S, KC_D,    KC_F,  KC_G,   /**/ KC_H,   KC_J,  KC_K,    KC_L,   KC_P,    KC_QUOT, \
-    KC_LCTL, KC_Z, KC_X, KC_C,    KC_V,  KC_B,   /**/ KC_N,   KC_M,  KC_COMM, KC_DOT, KC_SLSH, EXTRA,   \
-                         KC_LALT, LOWER, KC_SPC, /**/ KC_ENT, RAISE, KC_LGUI                            \
-  ),
-
-  [L_COLEMAK] = LAYOUT(                                                                                 \
-    KC_TAB,  KC_Q, KC_W, KC_F,    KC_P,  KC_G,   /**/ KC_J,   KC_L,  KC_U,    KC_Y,   KC_SCLN, KC_BSPC, \
-    KC_LSFT, KC_A, KC_R, KC_S,    KC_T,  KC_D,   /**/ KC_H,   KC_N,  KC_E,    KC_I,   KC_O,    KC_QUOT, \
-    KC_LCTL, KC_Z, KC_X, KC_C,    KC_V,  KC_B,   /**/ KC_K,   KC_M,  KC_COMM, KC_DOT, KC_SLSH, EXTRA,   \
-                         KC_LALT, LOWER, KC_SPC, /**/ KC_ENT, RAISE, KC_LGUI                            \
+  [L_QWERTY] = LAYOUT(                                                                                    \
+    KC_TAB,  KC_Q, KC_W, KC_E,    KC_R,  KC_T,   /**/ KC_Y,   KC_U,  KC_I,    KC_O,   KC_SCLN, KC_BSPC,   \
+    KC_LSFT, KC_A, KC_S, KC_D,    KC_F,  KC_G,   /**/ KC_H,   KC_J,  KC_K,    KC_L,   KC_P,    KC_QUOT,   \
+    KC_LCTL, KC_Z, KC_X, KC_C,    KC_V,  KC_B,   /**/ KC_N,   KC_M,  KC_COMM, KC_DOT, KC_SLSH, KC_BSLASH, \
+                         KC_LALT, LOWER, KC_SPC, /**/ KC_ENT, RAISE, KC_LGUI                              \
   ),
 
   [L_LOWER] = LAYOUT(                                                                                                       \
@@ -41,11 +34,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // F1-12 are on this layer (and not 1-12) due to KC_DELETE
   [L_RAISE] = LAYOUT(                                                                                                  \
     _______, KC_F1,   KC_F2,  KC_F3,   KC_F4,   KC_F5,   /**/ KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_DELETE, \
-    _______, KC_F11,  KC_F12, XXXXXXX, XXXXXXX, XXXXXXX, /**/ KC_INS,  XXXXXXX, KC_UP,   XXXXXXX,  KC_PSCR, XXXXXXX,   \
-    _______, KC_Z,    KC_X,   KC_C,    KC_V,    XXXXXXX, /**/ KC_APP,  KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______,   \
+    _______, KC_F11,  KC_F12, XXXXXXX, XXXXXXX, XXXXXXX, /**/ KC_INS,  RAISE_J, KC_UP,   XXXXXXX,  KC_PSCR, XXXXXXX,   \
+    _______, KC_Z,    KC_X,   KC_C,    KC_V,    XXXXXXX, /**/ KC_APP,  KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, XXXXXXX,   \
                               _______, _______, _______, /**/ _______, _______, _______                                \
   ),
 
+  // activated via LOWER+RAISE
   [L_ADJUST] = LAYOUT(                                                                                                 \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PLUS, /**/ XXXXXXX, _______, KC_PGUP,   _______, _______, _______, \
@@ -53,17 +47,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                _______, _______, _______, /**/ _______, _______, _______                               \
   ),
 
-  [L_EXTRA] = LAYOUT(                                                                                                            \
+  // activated via RAISE+j
+  [L_RAISE_J] = LAYOUT(                                                                                                          \
     _______,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU, _______,     \
     LSFT_T(KC_CAPS), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, TG(L_MOUSE), \
     _______,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, _______,     \
                                        _______, _______, _______, /**/ _______, _______, _______                                 \
   ),
 
-  [L_MOUSE] = LAYOUT(                                                                                                                       \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    /**/ XXXXXXX,       XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX,     \
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    /**/ KC_MS_WH_UP,   KC_MS_BTN1, KC_MS_UP,   KC_MS_BTN2,  XXXXXXX, TG(L_MOUSE), \
-    _______, KC_Z,    KC_X,    KC_C,    KC_V,    XXXXXXX,    /**/ KC_MS_WH_DOWN, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, XXXXXXX, XXXXXXX,     \
-                               _______, XXXXXXX, KC_MS_BTN1, /**/ KC_MS_BTN2,    XXXXXXX,    _______                                        \
+  [L_MOUSE] = LAYOUT(                                                                                                                    \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ XXXXXXX,       XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX,     \
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /**/ KC_MS_WH_UP,   KC_MS_BTN1, KC_MS_UP,   KC_MS_BTN2,  XXXXXXX, TG(L_MOUSE), \
+    _______, KC_Z,    KC_X,    KC_C,    KC_V,    XXXXXXX, /**/ KC_MS_WH_DOWN, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, XXXXXXX, XXXXXXX,     \
+                               _______, XXXXXXX, XXXXXXX, /**/ XXXXXXX,       XXXXXXX,    _______                                        \
   )
 };
